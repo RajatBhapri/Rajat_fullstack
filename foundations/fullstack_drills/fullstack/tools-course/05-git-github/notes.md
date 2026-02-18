@@ -6,6 +6,22 @@ I created a repository from my personal github account naming it as rajat_fullst
 
 ## Ssh key steps and configuration
 
-Generated a ssh key from terminal using command ssh -keygen, which creates a folder and generates key one public and one private, I copied the public key using cat command and went to GitHUb where I went to settings and added the public key in ssh section.
+Generated a ssh key from terminal using command
+```bash
+ssh-keygen -t ed25519 -C "your_email@example.com"
+```
+then I started my agent and gave the private key to it using command.
 
-Came back to terminal and asked for name and username I gave my github name and username later it asked for password I generated a **token** from my github account and gave it to my os terminal. This is how I used ssh.
+```bash
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+```
+next copied my public key from .ssh folder using command
+
+```bash
+cat ~/.ssh/id_ed25519.pub
+```
+and now went to github -> settings -> ssh key
+created a new key using the ssh public key which I have copied from .ssh folder.
+
+And now I am good to use git/github from my terminal.
