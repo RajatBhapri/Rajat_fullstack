@@ -63,13 +63,6 @@ mindmap
       Data center
       Secure storage
       Backup & replication
-    Access
-      Request file
-      Server retrieves file
-      File returned to user
-    Security
-      Encryption
-      Authentication
 ```
 
 ---
