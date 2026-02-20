@@ -46,12 +46,12 @@ sudo apt install caddy
 
 ## created a simple index.html file inside my work directory in virtual machine
 ```bash
-~/work/simple-site/index.html
+~/work/drill_aganitha/index.html
 ```
 
 ## strating a server 
 Started a caddy server from my virtual machine using command. 
 
 ```bash
-caddy file-server --root ~/work/simple-site --listen :8080
+caddy file-server --root ~/work/drill_aganitha --listen :8080
 ```
