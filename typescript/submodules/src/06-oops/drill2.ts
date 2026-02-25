@@ -15,4 +15,4 @@ const demo = new drill2();
 console.log(demo.pub);
 console.log(demo.pri);
 console.log(demo.pro);
-console.log(demo.#secret);    // #private gets executes even in runtime others gets execute in compile time only
+console.log(demo.#secret);    // #private gets executes in runtime others gets execute in compile time only
