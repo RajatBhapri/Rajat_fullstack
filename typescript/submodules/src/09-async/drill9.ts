@@ -1,5 +1,5 @@
 async function sendEmail(email: string) {
-  await new Promise((res) => setTimeout(res, 1000));
+   new Promise((res) => setTimeout(res, 1000));
 
   if (Math.random() < 0.5) throw new Error("SMTP failed");
 
