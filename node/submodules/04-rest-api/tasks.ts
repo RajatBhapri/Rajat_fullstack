@@ -1,0 +1,1 @@
+ export const tasks: { name:string ,id:number }[] = [{name:"rajat",id:2}]
