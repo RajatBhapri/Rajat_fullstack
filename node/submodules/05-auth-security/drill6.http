@@ -1,0 +1,25 @@
+### 
+GET http://localhost:3000/
+
+###
+
+### 
+GET http://localhost:3000/profile
+
+###
+
+### 
+GET http://localhost:3000/profile
+Authorization: Bearer TOKEN_USER
+
+###
+
+### 
+GET http://localhost:3000/admin
+Authorization: Bearer TOKEN_USER
+
+###
+
+### 
+GET http://localhost:3000/admin
+Authorization: Bearer TOKEN_ADMIN

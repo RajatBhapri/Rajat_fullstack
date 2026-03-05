@@ -1,0 +1,60 @@
+import express from "express";
+import type { Request, Response, NextFunction } from "express";
+import jwt from "jsonwebtoken";
+
+const app = express();
+app.use(express.json());
+
+const SECRET = "mysecret";
+
+interface JwtPayload {
+  id: number;
+  role: string;
+}
+
+function auth(req: Request, res: Response, next: NextFunction) {
+  const authHeader = req.headers["authorization"];
+  const token = authHeader && authHeader.split(" ")[1];
+
+  if (!token) return res.status(401).json({ error: "Token missing" });
+
+  try {
+    (req as any).user = jwt.verify(token, SECRET) as JwtPayload;
+    next();
+  } catch (err: any) {
+    return res.status(401).json({ error: err.message });
+  }
+}
+
+function requireRole(role: string) {
+  return (req: Request, res: Response, next: NextFunction) => {
+    if (!(req as any).user)
+      return res.status(401).json({ error: "Not authenticated" });
+    if ((req as any).user.role !== role)
+      return res.status(403).json({ error: "Forbidden: insufficient role" });
+    next();
+  };
+}
+
+app.get("/", (req, res) => {
+  res.json({ message: "Public route, no auth required" });
+});
+
+app.get("/profile", auth, (req, res) => {
+  res.json({
+    message: "This is your profile",
+    user: (req as any).user,
+  });
+});
+
+app.get("/admin", auth, requireRole("admin"), (req, res) => {
+  res.json({
+    message: "Welcome, admin!",
+    user: (req as any).user,
+  });
+});
+
+const PORT = 3000;
+app.listen(PORT, () =>
+  console.log(`Server running on http://localhost:${PORT}`),
+);

@@ -1,5 +1,5 @@
 import express, { urlencoded } from "express";
-import { tasks } from "./tasks.js";
+import { tasks } from "./tasks";
 import tasksRouter from "./routes/routes.js";
 
 const app = express();
@@ -15,8 +15,8 @@ app.get("/users/:id/tasks", (req, res) => {
   console.log(userId);
 
   const userTasks = tasks.find((t) => t.id === userId);
-if(!tasks){
-    res.json({msg:"not found"})
+  if (!tasks) {
+    res.json({ msg: "not found" })
   }
   res.status(200).json(userTasks);
 });

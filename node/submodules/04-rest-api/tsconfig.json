@@ -23,7 +23,8 @@
     // Stricter Typechecking Options
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
-
+    "esModuleInterop": true,
+    "moduleResolution": "node",
     // Style Options
     // "noImplicitReturns": true,
     // "noImplicitOverride": true,
@@ -39,6 +40,6 @@
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
-    "skipLibCheck": true,
+    "skipLibCheck": true
   }
 }
