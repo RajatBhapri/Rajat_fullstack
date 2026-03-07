@@ -1,26 +1,35 @@
-import * as dotenv from "dotenv";
+import "dotenv/config";
 
-dotenv.config();
+const args = process.argv.slice(2);
+const debugIndex = args.indexOf("--debug");
+const debug = debugIndex !== -1;
 
+if (debug) args.splice(debugIndex, 1);
+
+if (debug) {
+  console.log("Running in debug mode. Use --inspect to attach debugger.");
+}
+const greeting = process.env.GREETING || "Hello";
+const name = process.env.NAME || "World";
+
+console.log("Process ID:", process.pid);
+console.log("Node version:", process.version);
+console.log("Current working directory:", process.cwd());
+
+if (args.length > 0) {
+  console.log("Arguments:", args.join(" "));
+} else {
+  console.log("No arguments provided.");
+}
+
+console.log(`${greeting} ${name}`);
 
 process.on("SIGINT", () => {
-  console.log("\nShutting down gracefully.");
+  console.log("Shutting down gracefully.");
   process.exit(0);
 });
 
-
-const appName = process.env.APP_NAME || "Default App";
-const appPort = process.env.APP_PORT || "8080";
-
-
-const args = process.argv;
-
-
-
-console.log("=== INFO CLI ===");
-console.log("Process ID:", process.pid);
-console.log("Node Version:", process.version);
-console.log("Working Directory:", process.cwd());
-console.log("App Name:", appName);
-console.log("App Port:", appPort);
-
+if (debug) {
+  console.log("Press Ctrl+C to exit...");
+  setInterval(() => {}, 1 << 30);
+}

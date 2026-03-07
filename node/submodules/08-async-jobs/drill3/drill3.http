@@ -1,0 +1,26 @@
+### Health Check
+GET http://localhost:3000
+
+
+### Send Email Job
+POST http://localhost:3000/send-email
+Content-Type: application/json
+
+{
+  "to": "test@gmail.com",
+  "subject": "Hello from BullMQ"
+}
+
+
+### Send Another Email Job
+POST http://localhost:3000/send-email
+Content-Type: application/json
+
+{
+  "to": "rajat@example.com",
+  "subject": "Queue Test Email"
+}
+
+
+### Bull Board UI (Open in Browser)
+GET http://localhost:3000/admin/queues

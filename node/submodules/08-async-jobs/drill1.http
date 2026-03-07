@@ -1,0 +1,35 @@
+### Health check
+GET http://localhost:3000
+
+
+### Send Email Job
+POST http://localhost:3000/email
+Content-Type: application/json
+
+{
+  "to": "rajat@test.com",
+  "subject": "Welcome",
+  "body": "Hello Rajat!"
+}
+
+
+### Send Another Email Job
+POST http://localhost:3000/email
+Content-Type: application/json
+
+{
+  "to": "alice@test.com",
+  "subject": "Account Created",
+  "body": "Welcome Alice"
+}
+
+
+### Send Third Email Job
+POST http://localhost:3000/email
+Content-Type: application/json
+
+{
+  "to": "bob@test.com",
+  "subject": "Order Confirmed",
+  "body": "Your order is confirmed"
+}

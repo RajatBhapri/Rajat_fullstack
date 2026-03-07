@@ -1,0 +1,21 @@
+### Register
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+ "email":"bob@test.com",
+ "password":"123456"
+}
+
+### Login
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+ "email":"bob@test.com",
+ "password":"123456"
+}
+
+### Get tasks 
+GET http://localhost:3000/tasks
+Authorization: Bearer 
