@@ -1,15 +1,14 @@
 import { EventEmitter } from "events";
+import type { Task } from "./models/task";
 
 export class TaskEventEmitter extends EventEmitter {
-  emitTaskCreated(task: any): void {
+  emitTaskCreated(task: Task) {
     this.emit("taskCreated", task);
   }
-
-  emitTaskUpdated(task: any): void {
+  emitTaskUpdated(task: Task) {
     this.emit("taskUpdated", task);
   }
-
-  emitTaskDeleted(id: string): void {
+  emitTaskDeleted(id: string) {
     this.emit("taskDeleted", id);
   }
 }

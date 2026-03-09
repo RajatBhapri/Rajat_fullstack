@@ -1,41 +1,29 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import type { UserDatabase } from "../database.js";
+import type { UserDatabase, User } from "../database";
+import { loadConfig } from "../config";
 
-const SECRET = "supersecret";
-
-export interface JWTPayload {
-  userId: number;
-}
+const config = loadConfig();
 
 export class AuthService {
   constructor(private userDb: UserDatabase) {}
 
-  async register(email: string, password: string) {
+  async register(email: string, password: string): Promise<User> {
     const hash = await bcrypt.hash(password, 10);
-
     return this.userDb.createUser(email, hash, "user");
   }
 
   async login(email: string, password: string): Promise<string> {
     const user = this.userDb.getUserByEmail(email);
-
-    if (!user) {
+    if (!user || !(await bcrypt.compare(password, user.password_hash)))
       throw new Error("Invalid credentials");
-    }
 
-    const valid = await bcrypt.compare(password, user.password_hash);
-
-    if (!valid) {
-      throw new Error("Invalid credentials");
-    }
-
-    const token = jwt.sign({ userId: user.id }, SECRET, { expiresIn: "1h" });
-
-    return token;
+    return jwt.sign({ id: user.id, email: user.email }, config.jwtSecret, {
+      expiresIn: "1h",
+    });
   }
 
-  verifyToken(token: string): JWTPayload {
-    return jwt.verify(token, SECRET) as JWTPayload;
+  verifyToken(token: string) {
+    return jwt.verify(token, config.jwtSecret);
   }
 }
