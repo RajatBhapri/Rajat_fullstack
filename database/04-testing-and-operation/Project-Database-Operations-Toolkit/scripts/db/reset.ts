@@ -1,0 +1,4 @@
+import { execSync } from "child_process";
+
+execSync("npm run db:migrate", { stdio: "inherit" });
+execSync("npm run db:seed", { stdio: "inherit" });

@@ -1,0 +1,19 @@
+.book-list {
+  max-width: 400px;
+}
+
+.book-card {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+}
+
+.book-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.book-author {
+  color: gray;
+}

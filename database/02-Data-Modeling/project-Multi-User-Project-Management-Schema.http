@@ -1,0 +1,86 @@
+### Create User
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "name": "Rajat",
+  "email": "rajat1@email.com",
+  "preferences": {
+    "theme": "dark",
+    "notifications": true
+  }
+}
+
+
+### Create Project
+POST http://localhost:3000/projects
+Content-Type: application/json
+
+{
+  "ownerId": 1,
+  "name": "Project Management System"
+}
+
+
+### Create Task
+POST http://localhost:3000/tasks
+Content-Type: application/json
+
+{
+  "projectId": 1,
+  "assigneeId": 1,
+  "title": "Design database schema"
+}
+
+
+### Create Another Task
+POST http://localhost:3000/tasks
+Content-Type: application/json
+
+{
+  "projectId": 2,
+  "assigneeId": 1,
+  "title": "Implement API endpoints"
+}
+
+
+### Get Tasks for a Project
+GET http://localhost:3000/projects/2/tasks
+
+
+### Create Another User
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "name": "Bob",
+  "email": "bob1@email.com",
+  "preferences": {
+    "theme": "light"
+  }
+}
+
+
+### Create Another Project
+POST http://localhost:3000/projects
+Content-Type: application/json
+
+{
+  "ownerId": 1,
+  "name": "Frontend Dashboard"
+}
+
+
+### Create Task in Second Project
+POST http://localhost:3000/tasks
+Content-Type: application/json
+
+{
+  "projectId": 1,
+  "assigneeId": 1,
+  "title": "Create React UI"
+}
+
+
+### Get Tasks for Project 2
+GET http://localhost:3000/projects/2/tasks

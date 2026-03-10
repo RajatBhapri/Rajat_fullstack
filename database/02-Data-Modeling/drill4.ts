@@ -48,7 +48,6 @@ async function main() {
       $$ LANGUAGE plpgsql
     `);
 
-    // Trigger to update task_count after insert/delete
     await pool.query(`
       CREATE TRIGGER task_count_insert
       AFTER INSERT ON tasks1
@@ -65,12 +64,11 @@ async function main() {
 
     console.log("users1 table with denormalized task_count created.");
 
-    // --- Insert 1000 tasks1 to measure performance ---
     console.log("Inserting 1000 tasks1...");
     const start = Date.now();
 
     for (let i = 1; i <= 1000; i++) {
-      const user_id = (i % 3) + 1; // distribute tasks1 among 3 users1
+      const user_id = (i % 3) + 1;
       await pool.query(`INSERT INTO tasks1 (user_id, title) VALUES ($1, $2)`, [
         user_id,
         `Task ${i}`,
@@ -80,7 +78,6 @@ async function main() {
     const end = Date.now();
     console.log(`Inserted 1000 tasks1 in ${(end - start) / 1000} seconds.`);
 
-    // --- Compare query performance ---
     console.log("Counting tasks1 live for user 1:");
     let liveStart = Date.now();
     const liveCount = await pool.query(

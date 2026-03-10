@@ -30,7 +30,8 @@ async function main() {
        VALUES 
        ('Work','blue'),
        ('Personal','green'),
-       ('Shopping','orange')`,
+       ('Shopping','orange')
+       ON CONFLICT (name) DO NOTHING`,
     );
 
     await pool.query(`UPDATE tasks SET category_id = 1 WHERE id = 1`);

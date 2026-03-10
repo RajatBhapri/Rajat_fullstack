@@ -1,0 +1,34 @@
+{
+  "name": "drill3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "explain": "tsx src/explain.ts",
+    "db:reset": "psql $DATABASE_URL -c 'DROP TABLE IF EXISTS users;'",
+    "db:setup": "psql $DATABASE_URL -c 'CREATE TABLE IF NOT EXISTS users(id SERIAL PRIMARY KEY, email TEXT);'",
+    "db:index": "psql $DATABASE_URL -c 'CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);'",
+    "db:drop-index": "psql $DATABASE_URL -c 'DROP INDEX IF EXISTS idx_users_email;'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "dotenv": "^17.3.1",
+    "pg": "^8.20.0",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/pg": "^8.18.0",
+    "jest": "^30.3.0",
+    "ts-jest": "^29.4.6",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
+}

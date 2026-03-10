@@ -12,6 +12,8 @@ const pool = new Pool({
 async function main() {
   try {
     console.log("Connected to Postgres");
+    await pool.query(`DROP TABLE IF EXISTS tasks CASCADE`);
+    await pool.query(`DROP TABLE IF EXISTS users CASCADE`);
 
     await pool.query(`
       CREATE TABLE IF NOT EXISTS users (

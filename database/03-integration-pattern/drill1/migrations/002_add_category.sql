@@ -1,0 +1,31 @@
+CREATE TABLE IF NOT EXISTS categories (
+  id SERIAL PRIMARY KEY,
+  name TEXT UNIQUE
+);
+
+ALTER TABLE projects
+ADD COLUMN IF NOT EXISTS category_id INTEGER REFERENCES categories(id);
+
+DROP TABLE IF EXISTS tasks CASCADE;
+
+CREATE TABLE tasks (
+    id SERIAL PRIMARY KEY,
+    title TEXT NOT NULL,
+    user_id INTEGER REFERENCES users(id),
+    completed BOOLEAN DEFAULT false
+);
+
+DROP TABLE IF EXISTS project1 CASCADE;
+
+CREATE TABLE project1 (
+  id SERIAL PRIMARY KEY,
+  name TEXT NOT NULL
+);
+
+DROP TABLE IF EXISTS task1 CASCADE;
+
+CREATE TABLE task1 (
+  id SERIAL PRIMARY KEY,
+  project_id INT REFERENCES project1(id) ON DELETE CASCADE,
+  title TEXT NOT NULL
+);
