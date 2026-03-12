@@ -1,0 +1,76 @@
+@baseUrl = http://localhost:3000
+
+### Health Check
+
+GET {{baseUrl}}/health
+
+###
+
+### Register User
+
+POST {{baseUrl}}/api/auth/register
+Content-Type: application/json
+
+{
+"email": "rbhapri",
+"password": "password123"
+}
+
+###
+
+### Login User
+
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+"email": "rbhapri",
+"password": "password123"
+}
+
+###
+
+### Create Task
+
+POST {{baseUrl}}/api/tasks
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzczMzAzNjExfQ.7yea1LySHdFl9XRl6ivFRvLZI8rmXkoTsBSrttqNw-M
+
+{
+"title": " Node API",
+"description": "DELETE ",
+"priority": "high"
+}
+
+
+###
+
+### Get All Tasks
+
+GET {{baseUrl}}/api/tasks
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzczMzAzNzMxfQ.xZQgYXMJAsW0mZn7aoLqTLsQ1QMO9nqbf2JTRT0F434
+###
+
+### Get Task by ID
+
+GET {{baseUrl}}/api/tasks/a27f4999-b330-4b36-8c75-31b1a5a35e70
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzczMjYwMDc0fQ.Y1NqR8Jf62p5QRyfX3FBgSR0x43i35wccj_yBpY9gWo
+###
+
+### Update Task
+
+PUT {{baseUrl}}/api/tasks/d3c45221-b71c-4dc1-bf89-e83280ca5ae1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzczMjYwMDc0fQ.Y1NqR8Jf62p5QRyfX3FBgSR0x43i35wccj_yBpY9gWo
+
+{
+"title": "Updated Task Title",
+"completed": true
+}
+
+###
+
+### Delete Task
+
+DELETE {{baseUrl}}/api/tasks/d3c45221-b71c-4dc1-bf89-e83280ca5ae1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzczMjYwMDc0fQ.Y1NqR8Jf62p5QRyfX3FBgSR0x43i35wccj_yBpY9gWo
