@@ -13,9 +13,9 @@
     "title": "Learning Node.js",
     "description": "Finish REST API section",
     "priority": "high",
-    "completed": false,
+    "completed": true,
     "createdAt": "2026-03-11T15:40:18.610Z",
-    "updatedAt": "2026-03-11T15:40:18.610Z"
+    "updatedAt": "2026-03-13T10:26:45.204Z"
   },
   {
     "id": "e57b6c27-5293-4de8-b674-017067e6f086",
@@ -23,16 +23,16 @@
     "priority": "high",
     "completed": false,
     "createdAt": "2026-03-11T17:30:29.527Z",
-    "updatedAt": "2026-03-11T17:30:29.528Z",
+    "updatedAt": "2026-03-13T10:26:48.164Z",
     "description": "Build Task Notes API project"
   },
   {
     "id": "224ab249-35bf-4335-93bb-8137d07de67e",
     "title": "earn Node API",
     "priority": "high",
-    "completed": false,
+    "completed": true,
     "createdAt": "2026-03-11T17:30:39.482Z",
-    "updatedAt": "2026-03-11T17:30:39.483Z",
+    "updatedAt": "2026-03-13T10:26:49.594Z",
     "description": "Build Task Notes API project"
   },
   {
@@ -41,7 +41,7 @@
     "priority": "high",
     "completed": false,
     "createdAt": "2026-03-11T17:44:29.608Z",
-    "updatedAt": "2026-03-11T17:44:29.608Z",
+    "updatedAt": "2026-03-13T10:26:53.218Z",
     "description": "Build Task Notes API project"
   },
   {

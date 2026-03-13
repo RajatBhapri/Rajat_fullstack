@@ -21,13 +21,13 @@ export class TaskServer {
   private setupApp(): void {
     this.app.use(
       cors({
-        origin: "http://localhost:5173",
+        origin: "*",
         methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-        allowedHeaders: ["Content-Type", "Authorization"],
+        allowedHeaders: "*",
       }),
     );
 
-    this.app.options("/{*splat}", cors());
+    // this.app.options("/{*splat}", cors());
 
     this.app.use(express.json());
     this.app.use((req, _res, next) => {
@@ -49,7 +49,8 @@ export class TaskServer {
     this.app.use("/api/auth", authRouter);
 
     // Protect task routes
-    this.app.use("/api/tasks", authMiddleware, taskRouter);
+    // this.app.use("/api/tasks", authMiddleware, taskRouter);
+    this.app.use("/api/tasks", taskRouter);
 
     this.app.use((req: Request, res: Response) => {
       res.status(404).json({
