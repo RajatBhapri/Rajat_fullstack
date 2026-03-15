@@ -49,8 +49,8 @@ export class TaskServer {
     this.app.use("/api/auth", authRouter);
 
     // Protect task routes
-    // this.app.use("/api/tasks", authMiddleware, taskRouter);
-    this.app.use("/api/tasks", taskRouter);
+    this.app.use("/api/tasks", authMiddleware, taskRouter);
+    // this.app.use("/api/tasks", taskRouter);
 
     this.app.use((req: Request, res: Response) => {
       res.status(404).json({
