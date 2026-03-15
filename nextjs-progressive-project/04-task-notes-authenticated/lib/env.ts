@@ -1,15 +1,11 @@
-const fallbackApiUrl = "http://localhost:3000";
+import { config } from "@/lib/config";
 
 export const env = {
-  API_URL: process.env.NEXT_PUBLIC_API_URL || fallbackApiUrl,
+  API_URL: config.apiUrl,
   NODE_ENV: process.env.NODE_ENV ?? "development",
-  JWT_SECRET: process.env.JWT_SECRET || "your-secret-key",
+  JWT_SECRET: config.jwtSecret,
   AUTH_COOKIE_NAME: "auth-token",
   USER_COOKIE_NAME: "user",
+  AUTH_TOKEN_STORAGE_KEY: "task_notes_token",
+  AUTH_EMAIL_STORAGE_KEY: "task_notes_user_email",
 };
-
-if (!process.env.NEXT_PUBLIC_API_URL && process.env.NODE_ENV !== "production") {
-  console.warn(
-    `NEXT_PUBLIC_API_URL is not set. Falling back to ${fallbackApiUrl}.`,
-  );
-}
